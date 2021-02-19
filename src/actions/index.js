@@ -9,7 +9,7 @@ export const ERROR_TEXT = "ERROR_TEXT";
 
 // TASK 1.
 export const fetchSmurfs = () => dispatch => {
-  return (dispatch) => {
+  
     dispatch({ type: FETCH_START });
     axios
       .get('http://localhost:3333/smurfs')
@@ -19,7 +19,6 @@ export const fetchSmurfs = () => dispatch => {
       .catch(err => {
         dispatch({ type: FETCH_FAIL, payload: err.response.data });
       })
-  }
 };
 
 

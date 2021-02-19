@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
-import { fetchSmurfs } from './actions';
+import { fetchSmurfs } from './actions/index';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
 class App extends Component {
-  
+  // calling fetchSmurfs when it component loads
   componentDidMount() {
+    // the component mounts and I can see the it if I console log, but nothing is rendering from the API request.
     fetchSmurfs();
-  }
+  };
 
   render() {
     return (
@@ -27,7 +28,7 @@ class App extends Component {
   }
 }
 
-export default connect(null, { fetchSmurfs })(App);
+export default connect(null, {fetchSmurfs})(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.

@@ -4,40 +4,40 @@ export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAIL = "FETCH_FAIL";
 export const ADD_SMURF = "ADD SMURF";
-export const ERROR_TEXT = "ERROR_TEXT";
+export const SET_ERROR = "SET_ERROR";
 
 
 // TASK 1.
 export const fetchSmurfs = () => dispatch => {
+  dispatch({ type: FETCH_START});
+  axios
+  .get('http://localhost:3333/smurfs')
+  .then((res) => {
+    dispatch({ type:FETCH_SUCCESS, payload: res.data })
+  })
+  .catch(err => {
+    dispatch({type: FETCH_FAIL, payload: err.response.data})
+  })
   
-    dispatch({ type: FETCH_START });
-    axios
-      .get('http://localhost:3333/smurfs')
-      .then((res) => {
-        dispatch({ type: FETCH_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: FETCH_FAIL, payload: err.response.data });
-      })
 };
 
 
 // TASK 2.
-export const addSmurf = (updatedSmurfs) => dispatch => {
+export const addSmurf = (updateSmurfs) => dispatch => {
   axios
-    .post('http://localhost:3333/smurfs', updatedSmurfs)
-    .then(res => {
-      dispatch({ type: ADD_SMURF, payload: res.data })
+    .post('http://localhost:3333/smurfs', updateSmurfs)
+    .then((res) => {
+      dispatch({ type: FETCH_SUCCESS, payload: res.data })
     })
-    .catch(err => {
-      dispatch({ type: FETCH_FAIL, payload: err.response.data })
+    .catch(error => {
+      dispatch({ type: FETCH_FAIL, payload: error.response })
     })
 };
 
 
 // TASK 3.
-export const errorText = () => dispatch => {
-  dispatch({ type: ERROR_TEXT })
+export const setError = () => dispatch => {
+  dispatch({ type: SET_ERROR })
 };
 
 

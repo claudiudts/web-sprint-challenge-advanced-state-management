@@ -1,47 +1,49 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL, ADD_SMURF, ERROR_TEXT } from '../actions/index';
+import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL, ADD_SMURF, SET_ERROR } from "./../actions/index";
 
 export const initialState = {
   // Task 1.
   smurfs: [],
-  isLoading: false,
-  error: ''
-}
-
+    isLoading: false,
+    error: ''
+  }
+  
  const reducer = (state = initialState, action) => {
   switch(action.type) {
     // created reducer cases 
-    case("FETCH_START"):
+    case(FETCH_START):
       return({
         ...state,
-        smurfs: [...state],
-        isLoading: true
+        isLoading: true,
+        error: '',
       })
-    case("FETCH_SUCCESS"):
-      return ({
+    case(FETCH_SUCCESS):
+      return({
         ...state,
         smurfs: action.payload,
-        isLoading: false
+        isLoading: false,
+       
+  
       })
-    case("FETCH_FAIL"):
-      return ({
+    case(FETCH_FAIL):
+      return({
         ...state,
         isLoading: true,
-        error: 'something is wrong with the fetch request' + action.payload,
+        error: "there is a problem with the api request" + action.payload
       })
-    case("ADD_SMURF"):
-      return ({
+    case(ADD_SMURF):
+      return({
         ...state,
         smurfs: [...state.smurfs, action.payload],
         isLoading: false
       })
-    case("ERROR_TEXT"):
-      return ({
+    case(SET_ERROR):
+      return({
         ...state,
-        isLoading: true,
-        error: "Please make sure everything is filled out completely."
+        isLoading: false,
+        error: 'please have everything filled out completely'
       })
     default:
-      return state
+      return state;
   }
 }
 

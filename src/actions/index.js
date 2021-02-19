@@ -13,24 +13,25 @@ export const fetchSmurfs = () => dispatch => {
   axios
   .get('http://localhost:3333/smurfs')
   .then((res) => {
-    dispatch({ type:FETCH_SUCCESS, payload: res.data })
+    dispatch({ type: FETCH_SUCCESS, payload: res.data })
   })
   .catch(err => {
-    dispatch({type: FETCH_FAIL, payload: err.response.data})
+    dispatch({ type: FETCH_FAIL, payload: err.response.data })
   })
   
 };
 
 
 // TASK 2.
-export const addSmurf = (updateSmurfs) => dispatch => {
+export const addSmurf = (newSmurf) => dispatch => {
+  
   axios
-    .post('http://localhost:3333/smurfs', updateSmurfs)
+    .post('http://localhost:3333/smurfs', newSmurf)
     .then((res) => {
       dispatch({ type: FETCH_SUCCESS, payload: res.data })
     })
     .catch(error => {
-      dispatch({ type: FETCH_FAIL, payload: error.response })
+      dispatch({ type: FETCH_FAIL, payload: error.response.Error })
     })
 };
 

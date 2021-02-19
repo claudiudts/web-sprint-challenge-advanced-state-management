@@ -9,7 +9,7 @@ export const initialState = {
   
  const reducer = (state = initialState, action) => {
   switch(action.type) {
-    // created reducer cases 
+    // TASK 2-7, creating reducer cases!
     case(FETCH_START):
       return({
         ...state,
@@ -21,20 +21,18 @@ export const initialState = {
         ...state,
         smurfs: action.payload,
         isLoading: false,
-       
-  
       })
     case(FETCH_FAIL):
       return({
         ...state,
         isLoading: true,
-        error: "there is a problem with the api request" + action.payload
+        error: "there is a problem with the api request" + action.payload, 
       })
     case(ADD_SMURF):
       return({
         ...state,
-        smurfs: [...state.smurfs, action.payload],
-        isLoading: false
+        isLoading: false,
+        smurfs: [...state.smurfs, { id: state.smurfs.length,...action.payload}],
       })
     case(SET_ERROR):
       return({

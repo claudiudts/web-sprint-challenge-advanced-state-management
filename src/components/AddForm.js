@@ -25,7 +25,7 @@ const AddForm = (props) => {
             props.addSmurf(state);
         }
     }
-    console.log(state)
+    
     return(<section>
         <h2>Add Smurf</h2>
         <form onSubmit={handleSubmit}>

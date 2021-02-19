@@ -53,7 +53,7 @@ const AddForm = (props) => {
     </section>);
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return ({
         errorMessage: state.error
     })

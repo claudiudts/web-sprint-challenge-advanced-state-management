@@ -1,10 +1,10 @@
 import { FETCH_START, FETCH_SUCCESS, FETCH_FAIL, ADD_SMURF, SET_ERROR } from "./../actions/index";
 
+// Task 1.
 export const initialState = {
-  // Task 1.
-  smurfs: [],
+    smurfs: [],
     isLoading: false,
-    error: ''
+    error: '',
   }
   
  const reducer = (state = initialState, action) => {
@@ -14,7 +14,6 @@ export const initialState = {
       return({
         ...state,
         isLoading: true,
-        error: '',
       })
     case(FETCH_SUCCESS):
       return({
@@ -26,19 +25,19 @@ export const initialState = {
       return({
         ...state,
         isLoading: true,
-        error: "there is a problem with the api request" + action.payload, 
+        error: "there is a problem with the api request" + action.payload,
       })
     case(ADD_SMURF):
       return({
         ...state,
-        isLoading: false,
         smurfs: [...state.smurfs, { id: state.smurfs.length,...action.payload}],
+        isLoading: false,
       })
     case(SET_ERROR):
       return({
         ...state,
-        isLoading: false,
-        error: 'please have everything filled out completely'
+        isLoading: true,
+        error: 'please have everything filled out completely',
       })
     default:
       return state;

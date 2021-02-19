@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
 import Header from './components/Header';
 import { fetchSmurfs } from './actions/index';
+import { connect } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 
+
 class App extends Component {
-  // calling fetchSmurfs when it component loads
+  // calling fetchSmurfs when component loads
   componentDidMount() {
+    console.log('component did mount, yes!')
     // the component mounts and I can see the it if I console log, but nothing is rendering from the API request.
     fetchSmurfs();
   };
@@ -20,8 +22,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <main>
-          <SmurfList/>
-          <AddForm/>
+          <SmurfList />
+          <AddForm />
         </main>
       </div>
     );

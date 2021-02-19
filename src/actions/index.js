@@ -9,24 +9,23 @@ export const SET_ERROR = "SET_ERROR";
 
 // TASK 1.
 export const fetchSmurfs = () => dispatch => {
-  dispatch({ type: FETCH_START});
+  dispatch({ type: FETCH_START });
   axios
-  .get('http://localhost:3333/smurfs')
+  .get(`http:/localhost:3333/smurfs`)
   .then((res) => {
-    dispatch({ type: FETCH_SUCCESS, payload: res.data })
+    dispatch({ type: FETCH_SUCCESS, payload: [] })
   })
   .catch(err => {
     dispatch({ type: FETCH_FAIL, payload: err.response.data })
   })
-  
 };
 
 
 // TASK 2.
 export const addSmurf = (newSmurf) => dispatch => {
-  
+  dispatch({ type: ADD_SMURF })
   axios
-    .post('http://localhost:3333/smurfs', newSmurf)
+    .post(`http://localhost:3333/smurfs`, newSmurf)
     .then((res) => {
       dispatch({ type: FETCH_SUCCESS, payload: res.data })
     })

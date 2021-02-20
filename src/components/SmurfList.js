@@ -23,12 +23,14 @@ import { fetchSmurfs } from './../actions';
        
        return(<div className="listContainer">
             {state.smurfs.map((smurf) => {
-                return <Smurf key={smurf.id} smurf={smurf} />
+                return (
+                <Smurf key={smurf.id} smurf={smurf} />
+                )      
             })}
             </div>);
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return ({
         smurfs: state.smurfs,
         isLoading: state.isLoading,

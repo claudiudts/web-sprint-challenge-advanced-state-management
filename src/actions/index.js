@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 export const FETCH_START = "FETCH_START";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAIL = "FETCH_FAIL";
@@ -11,12 +10,12 @@ export const SET_ERROR = "SET_ERROR";
 export const fetchSmurfs = () => dispatch => {
   dispatch({ type: FETCH_START });
   axios
-  .get(`http://localhost:3333/smurfs`)
+  .get(`http:/localhost:3333/smurfs`)
   .then((res) => {
-    dispatch({ type: FETCH_SUCCESS, payload: [] })
+    dispatch({ type: FETCH_SUCCESS, payload: res.data })
   })
   .catch(err => {
-    dispatch({ type: FETCH_FAIL, payload: err.response.data })
+    dispatch({ type: FETCH_FAIL, payload: err.response.data.Error })
   })
 };
 
@@ -25,7 +24,7 @@ export const fetchSmurfs = () => dispatch => {
 export const addSmurf = (newSmurf) => dispatch => {
   dispatch({ type: ADD_SMURF })
   axios
-    .post(`http://localhost:3333/smurfs`, newSmurf)
+    .post(`http:/localhost:3333/smurfs`, newSmurf)
     .then((res) => {
       dispatch({ type: FETCH_SUCCESS, payload: res.data })
     })

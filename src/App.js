@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
+import axios from "axios";
 
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
   componentDidMount() {
     console.log('component did mount, yes!')
     // the component mounts and I can see the it if I console log, but nothing is rendering from the API request.
+    axios.get('http://localhost:3333/smurfs').then(res=>{console.log(res.data)});
     fetchSmurfs();
   };
 

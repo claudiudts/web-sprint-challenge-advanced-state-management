@@ -3,9 +3,6 @@ import Smurf from './Smurf';
 import { connect } from 'react-redux';
 import { fetchSmurfs } from './../actions';
 
-
-
-
  const SmurfList = (state) => {
 
     //   const isLoading = false;
